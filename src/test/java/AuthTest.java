@@ -2,8 +2,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -33,7 +32,7 @@ public class AuthTest {
 
     @Test
     void shouldRegistatedInvalidLogin() {
-        InputData registration = DataGenerator.getNewUser("blocked");
+        InputData registration = DataGenerator.getNewUser("active");
         Faker faker = new Faker();
         open("http://localhost:9999");
         SelenideElement form = $(".form");
@@ -45,7 +44,7 @@ public class AuthTest {
 
     @Test
     void shouldRegistatedInvalidPassword() {
-        InputData registration = DataGenerator.getNewUser("blocked");
+        InputData registration = DataGenerator.getNewUser("active");
         Faker faker = new Faker();
         open("http://localhost:9999");
         SelenideElement form = $(".form");
